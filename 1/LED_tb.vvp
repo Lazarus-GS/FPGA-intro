@@ -1,0 +1,42 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000002dee7914de0 .scope module, "LED_tb" "LED_tb" 2 4;
+ .timescale -9 -9;
+v000002dee7915100_0 .var "i", 0 0;
+v000002dee79151a0_0 .net "j", 0 0, L_000002dee78c6c90;  1 drivers
+S_000002dee7914f70 .scope module, "DUT" "LED" 2 9, 3 1 0, S_000002dee7914de0;
+ .timescale -9 -9;
+    .port_info 0 /INPUT 1 "i";
+    .port_info 1 /OUTPUT 1 "j";
+L_000002dee78c6c90 .functor BUFZ 1, v000002dee7915100_0, C4<0>, C4<0>, C4<0>;
+v000002dee78c9ed0_0 .net "i", 0 0, v000002dee7915100_0;  1 drivers
+v000002dee78c6930_0 .net "j", 0 0, L_000002dee78c6c90;  alias, 1 drivers
+    .scope S_000002dee7914de0;
+T_0 ;
+    %vpi_call 2 12 "$dumpfile", "LED_tb.vcd" {0 0 0};
+    %vpi_call 2 13 "$dumpvars", 32'sb00000000000000000000000000000000, S_000002dee7914de0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002dee7915100_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002dee7915100_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002dee7915100_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 24 "$display", "Test Completed!" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "LED_tb.v";
+    "./LED.v";
